@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Form Example</title>
+<link
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+	rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<style>
+body {
+	background-color: #f8f9fa;
+    font-family: 'Roboto';      
+}
+
+.container {
+    box-shadow: 0 5px 5px grey;
+	max-width: 600px;
+	margin: auto;
+	padding-bottom:10px;
+}
+
+h2 {
+	text-align: center;
+	margin-bottom: 20px;
+}
+button{
+  width:160px;
+  position:relative;
+  left:200px;
+}
+</style>
+<body>
+	<div class="container mt-5">
+		<h2 class="mb-4">User Registration Form</h2>
+		<form th:action="@{/registerUser}" th:object="${user}" method="post">
+			<div class="form-group">
+				<label for="country">FirstName</label> <input type="text"
+					class="form-control" id="name" placeholder="Enter your firstname"
+					th:field="*{firstname}" required>
+			</div>
+			<div class="form-group">
+				<label for="name">LastName</label> <input type="text"
+					class="form-control" id="name" placeholder="Enter your lastname"
+					th:field="*{lastname}" required>
+			</div>
+			<div class="form-group">
+				<label for="name">Email</label> <input type="text"
+					class="form-control" id="name" placeholder="Enter your email-id"
+					th:field="*{email}" required>
+			</div>
+			<div class="form-group">
+				<label for="name">Age</label> <input type="text"
+					class="form-control" id="name" placeholder="Enter your age"
+					th:field="*{age}"  required>
+			</div>
+			<div class="form-group">
+            <label>Gender:</label>
+            <label>
+                <input type="radio" th:field="*{gender}" value="Male" /> Male
+            </label>
+            <label>
+                <input type="radio" th:field="*{gender}" value="Female" /> Female
+            </label>
+			</div>
+			<div class="form-group">
+				<label for="name">Country</label> <input type="text"
+					class="form-control" id="name" placeholder="country"
+					th:field="*{country}" required>
+			</div>
+			<button th:href="@{/}" type="submit" class="btn btn-primary">Submit</button>
+		</form>
+	</div>
+
+</body>
+</html>

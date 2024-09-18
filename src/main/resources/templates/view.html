@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https:/thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Details</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+  </head>
+  <style>
+  body {
+	 font-family: 'Roboto';      
+     }
+    nav {
+      height: 50px;
+      align-content: center;
+    }
+    li {
+      padding-top:10px;
+      margin: 40px;
+      display: inline-block;
+      color: white;
+    }
+ footer {
+      height: 100px;
+      position: fixed;
+      top: 365px;
+      display: flex;
+      align-content: center;
+    }
+
+    footer > p {
+      margin: 0;
+      position: relative;
+      left: 700px;
+      color: white;
+    }
+
+    #bt1:hover{
+      background-color:red;
+      color:white;
+    }
+    
+    #bt2{
+    margin-left:30px;
+    width:100px;
+    }
+     #bt3{
+    margin-left:10px;
+    width:100px;
+    }
+    
+  </style>
+  <body>
+  <nav class="navbar bg-primary" data-bs-theme="dark">
+      <ul style="list-style-type: none">
+        <li>Home</li>
+
+        <li>Contact</li>
+
+        <li>About</li>
+      </ul>
+       <a href="/user" ><button type="submit" class="btn btn-primary btn-sm" id="bt1">Add New User</button></a>
+    </nav>
+    <div class="container mt-5">
+      <h2 class="mb-4">User Details</h2>
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+          <thead class="thead-dark">
+            <tr>
+              <th>FirstName</th>
+              <th>LastName</th>
+              <th>Email</th>
+              <th>Age</th>
+              <th>Gender</th>
+              <th>Country</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="user :${user}">
+              <td th:text="${user.firstname}"></td>
+              <td th:text="${user.lastname}"></td>
+              <td th:text="${user.email}"></td>
+              <td th:text="${user.age}"></td>
+              <td th:text="${user.gender}"></td>
+              <td th:text="${user.country}"></td>
+              <td>
+                <a th:href="@{/user/{id}(id=${user.id})}"
+                  ><button type="submit" class="btn btn-primary btn-sm" id="bt2">
+                    Update
+                  </button></a>
+                   <a th:href="@{/delete/{id}(id=${user.id})}">
+                  <button type="submit" class="btn btn-danger btn-sm" id="bt3">
+                    Delete
+                  </button></a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <footer class="navbar bg-primary" data-bs-theme="dark"><p class="footer">Developed By Kiran</p></footer>
+  </body>
+</html>
